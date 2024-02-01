@@ -1,6 +1,6 @@
 class View {
-  static error() {
-    console.log("error");
+  static error(err) {
+    console.log(err);
   }
   static help() {
     console.log(" $ node todo.js");
@@ -13,7 +13,9 @@ class View {
     console.log(" $ node todo.js uncomplete <task_id>");
   }
   static list(list) {
-    console.table(list);
+    for (let i = 0; i < list.length; i++) {
+      console.log(list[i].id + ". " + list[i].complete + " " + list[i].task);
+    }
   }
 
   static add(newTask) {
@@ -24,6 +26,16 @@ class View {
   }
   static delete(deleteTask) {
     console.log(`DELETED "${deleteTask.task}" from your TODO list...`);
+  }
+  static complete(list) {
+    for (let i = 0; i < list.length; i++) {
+      console.log(list[i].id + ". " + list[i].complete + " " + list[i].task);
+    }
+  }
+  static uncomplete(list) {
+    for (let i = 0; i < list.length; i++) {
+      console.log(list[i].id + ". " + list[i].complete + " " + list[i].task);
+    }
   }
 }
 module.exports = View;
