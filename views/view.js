@@ -19,5 +19,11 @@ class View {
   static add(newTask) {
     console.log(`Success adding ${newTask.task} to the database`);
   }
+  static find(findTask) {
+    console.log(findTask.id + ". " + findTask.task);
+  }
+  static delete(deleteTask) {
+    console.log(`DELETED "${deleteTask.task}" from your TODO list...`);
+  }
 }
 module.exports = View;

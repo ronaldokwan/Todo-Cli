@@ -4,15 +4,11 @@
     "task": "Bikin Aplikasi"
   },
   {
-    "id": 2,
+    "id": 4,
     "task": "Main node js"
   },
   {
-    "id": 3,
+    "id": 5,
     "task": "testing"
-  },
-  {
-    "id": 4,
-    "task": "asd"
   }
 ]

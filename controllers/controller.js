@@ -15,5 +15,17 @@ class Controller {
     let newTask = Model.add(task);
     View.add(newTask);
   }
+  static find(task) {
+    let findTask = Model.find(task);
+    View.find(findTask);
+  }
+  static delete(task) {
+    let deleteTask = Model.delete(task);
+    if (deleteTask === -1) {
+      View.error();
+    } else {
+      View.delete(deleteTask);
+    }
+  }
 }
 module.exports = Controller;

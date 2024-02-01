@@ -26,5 +26,26 @@ class Model {
     fs.writeFileSync("./data/data.json", string);
     return newTask;
   }
+  static find(task) {
+    let list = Model.list();
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id === Number(task)) {
+        return list[i];
+      }
+    }
+  }
+  static delete(task) {
+    let list = Model.list();
+    let result = [...list];
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id === Number(task)) {
+        list.splice([i], 1);
+        let string = JSON.stringify(list, null, 2);
+        fs.writeFileSync("./data/data.json", string);
+        return result[i];
+      }
+    }
+    return -1;
+  }
 }
 module.exports = Model;
