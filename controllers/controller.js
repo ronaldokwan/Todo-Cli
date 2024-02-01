@@ -9,7 +9,7 @@ class Controller {
   }
   static list() {
     let list = Model.list();
-    View.list(list);
+    View.show(list);
   }
   static add(task) {
     let newTask = Model.add(task);
@@ -21,10 +21,10 @@ class Controller {
   }
   static find(task) {
     let findTask = Model.find(task);
-    if (findTask === -1) {
+    if (!findTask) {
       View.error("can't find the ID");
     } else {
-      View.find(findTask);
+      View.show(findTask);
     }
   }
   static delete(task) {
@@ -36,20 +36,27 @@ class Controller {
     }
   }
   static complete(task) {
-    let completeTask = Model.complete(task);
-    if (completeTask === -1) {
-      View.error("There is no task to be completed");
-    } else {
-      View.complete(completeTask);
-    }
+    Model.complete(task) === -1
+      ? View.error("There is no task to be completed")
+      : View.show(Model.complete(task));
+    // let completeTask = Model.complete(task);
+    // if (completeTask === -1) {
+    //   View.error("There is no task to be completed");
+    // } else {
+    //   View.show(completeTask);
+    // }
   }
   static uncomplete(task) {
-    let uncompleteTask = Model.uncomplete(task);
-    if (uncompleteTask === -1) {
-      View.error("There is no task to be uncompleted");
-    } else {
-      View.uncomplete(uncompleteTask);
-    }
+    Model.uncomplete(task) === -1
+      ? View.error("There is no task to be uncompleted")
+      : View.show(Model.uncomplete(task));
+
+    // let uncompleteTask = Model.uncomplete(task);
+    // if (uncompleteTask === -1) {
+    //   View.error("There is no task to be uncompleted");
+    // } else {
+    //   View.show(uncompleteTask);
+    // }
   }
 }
 module.exports = Controller;

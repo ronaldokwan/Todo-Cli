@@ -3,9 +3,11 @@ const Factory = require("./factory");
 
 class Model {
   static list() {
+    // array object
     let list = fs.readFileSync("./data/data.json", "utf8");
     list = JSON.parse(list);
 
+    // class
     let result = [];
     for (let i = 0; i < list.length; i++) {
       let index = list[i];
@@ -22,7 +24,7 @@ class Model {
     if (list.length > 0) {
       id = list[list.length - 1].id + 1;
     }
-    let newTask = Factory.generateTask(id, task, "[ ]");
+    let newTask = Factory.generateTask(id, task, false);
     list.push(newTask);
 
     let string = JSON.stringify(list, null, 2);
@@ -30,13 +32,15 @@ class Model {
     return newTask;
   }
   static find(task) {
-    let list = Model.list();
-    for (let i = 0; i < list.length; i++) {
-      if (list[i].id === Number(task)) {
-        return list[i];
-      }
-    }
-    return -1;
+    return [Model.list().find((item) => item.id === Number(task))];
+
+    // let list = Model.list();
+    // for (let i = 0; i < list.length; i++) {
+    //   if (list[i].id === Number(task)) {
+    //     return [list[i]];
+    //   }
+    // }
+    // return -1;
   }
   static delete(task) {
     let list = Model.list();
@@ -55,7 +59,7 @@ class Model {
     let list = Model.list();
     for (let i = 0; i < list.length; i++) {
       if (list[i].id === Number(task)) {
-        list[i].complete = "[X]";
+        list[i].complete = true;
         let string = JSON.stringify(list, null, 2);
         fs.writeFileSync("./data/data.json", string);
         return Model.list();
@@ -67,7 +71,7 @@ class Model {
     let list = Model.list();
     for (let i = 0; i < list.length; i++) {
       if (list[i].id === Number(task)) {
-        list[i].complete = "[ ]";
+        list[i].complete = false;
         let string = JSON.stringify(list, null, 2);
         fs.writeFileSync("./data/data.json", string);
         return Model.list();

@@ -2,21 +2,26 @@
   {
     "id": 14,
     "task": "ndklawdasd",
-    "complete": "[X]"
+    "complete": false
   },
   {
     "id": 15,
     "task": "dbwaif",
-    "complete": "[X]"
-  },
-  {
-    "id": 16,
-    "task": "asd",
-    "complete": "[ ]"
+    "complete": true
   },
   {
     "id": 17,
     "task": "lkj",
-    "complete": "[ ]"
+    "complete": false
+  },
+  {
+    "id": 18,
+    "task": "hgrsefdfsdf",
+    "complete": false
+  },
+  {
+    "id": 19,
+    "task": "awdxds",
+    "complete": true
   }
 ]
