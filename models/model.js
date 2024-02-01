@@ -1,5 +1,5 @@
 const fs = require("fs");
-const Task = require("./class");
+const Factory = require("./factory");
 
 class Model {
   static list() {
@@ -9,7 +9,7 @@ class Model {
     let result = [];
     for (let i = 0; i < list.length; i++) {
       let index = list[i];
-      result.push(new Task(index.id, index.task, index.complete));
+      result.push(Factory.generateTask(index.id, index.task, index.complete));
     }
     return result;
   }
@@ -22,7 +22,7 @@ class Model {
     if (list.length > 0) {
       id = list[list.length - 1].id + 1;
     }
-    let newTask = new Task(id, task, "[ ]");
+    let newTask = Factory.generateTask(id, task, "[ ]");
     list.push(newTask);
 
     let string = JSON.stringify(list, null, 2);
