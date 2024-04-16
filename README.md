@@ -1,5 +1,7 @@
 # Todo cli
 
+MVC(Model View Controller) Sync
+
 cli command
 
 node todo.js or node todo
