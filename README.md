@@ -2,6 +2,8 @@
 
 cli command
 
+node todo.js or node todo
+
 - $ node todo.js
 - $ node todo.js help
 - $ node todo.js list
