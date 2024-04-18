@@ -21,7 +21,7 @@ class Controller {
   }
   static find(task) {
     let findTask = Model.find(task);
-    if (!findTask) {
+    if (findTask === -1) {
       View.error("can't find the ID");
     } else {
       View.show(findTask);
@@ -36,27 +36,24 @@ class Controller {
     }
   }
   static complete(task) {
-    Model.complete(task) === -1
-      ? View.error("There is no task to be completed")
-      : View.show(Model.complete(task));
-    // let completeTask = Model.complete(task);
-    // if (completeTask === -1) {
-    //   View.error("There is no task to be completed");
-    // } else {
-    //   View.show(completeTask);
-    // }
+    let completeTask = Model.complete(task);
+    if (completeTask === -1) {
+      View.error("There is no task to be completed");
+    } else if (completeTask === -2) {
+      View.error("Task already completed");
+    } else {
+      View.show(completeTask);
+    }
   }
   static uncomplete(task) {
-    Model.uncomplete(task) === -1
-      ? View.error("There is no task to be uncompleted")
-      : View.show(Model.uncomplete(task));
-
-    // let uncompleteTask = Model.uncomplete(task);
-    // if (uncompleteTask === -1) {
-    //   View.error("There is no task to be uncompleted");
-    // } else {
-    //   View.show(uncompleteTask);
-    // }
+    let uncompleteTask = Model.uncomplete(task);
+    if (uncompleteTask === -1) {
+      View.error("There is no task to be uncompleted");
+    } else if (uncompleteTask === -2) {
+      View.error("Task already uncompleted");
+    } else {
+      View.show(uncompleteTask);
+    }
   }
 }
 module.exports = Controller;

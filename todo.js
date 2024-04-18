@@ -1,8 +1,10 @@
 // your commands in here
+const Controller = require("./controllers/controller");
+
 const input = process.argv;
 const command = input[2];
 const command2 = input[3];
-const Controller = require("./controllers/controller");
+
 if (command === "help" || command === undefined) {
   Controller.help();
 } else if (command === "list") {

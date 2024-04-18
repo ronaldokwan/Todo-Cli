@@ -32,15 +32,13 @@ class Model {
     return newTask;
   }
   static find(task) {
-    return [Model.list().find((item) => item.id === Number(task))];
-
-    // let list = Model.list();
-    // for (let i = 0; i < list.length; i++) {
-    //   if (list[i].id === Number(task)) {
-    //     return [list[i]];
-    //   }
-    // }
-    // return -1;
+    let list = Model.list();
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id === Number(task)) {
+        return [list[i]];
+      }
+    }
+    return -1;
   }
   static delete(task) {
     let list = Model.list();
@@ -59,6 +57,9 @@ class Model {
     let list = Model.list();
     for (let i = 0; i < list.length; i++) {
       if (list[i].id === Number(task)) {
+        if (list[i].complete === true) {
+          return -2;
+        }
         list[i].complete = true;
         let string = JSON.stringify(list, null, 2);
         fs.writeFileSync("./data/data.json", string);
@@ -71,6 +72,9 @@ class Model {
     let list = Model.list();
     for (let i = 0; i < list.length; i++) {
       if (list[i].id === Number(task)) {
+        if (list[i].complete === false) {
+          return -2;
+        }
         list[i].complete = false;
         let string = JSON.stringify(list, null, 2);
         fs.writeFileSync("./data/data.json", string);
